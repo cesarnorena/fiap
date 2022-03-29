@@ -1,7 +1,9 @@
 # Fiap
-## Artifical Intelligence
 
-### [Cyber Security](./cyber-security/README.md)
+## [Artificial Intelligence](./artificial-intelligence/README.md)
 
-## [Marchine Learning](./machine-learning/README.md)
+## [Cyber Security](./cyber-security/README.md)
 
+## [Machine Learning](./machine-learning/README.md)
+
+## [Python](./python/README.md)

@@ -1,7 +1,7 @@
-# 57521
+# leitura_anterior = 57521
 leitura_anterior = int(input())
 
-# 57761
+# leitura_atual = 57761
 leitura_atual = int(input())
 
 consumo_mes = leitura_atual - leitura_anterior
