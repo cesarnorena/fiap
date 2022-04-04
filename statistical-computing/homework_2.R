@@ -1,14 +1,14 @@
 # 1
-# A - FALSE
+# a - FALSE
 seq(10, 100, 10)
 
-# B - FALSE
+# b - FALSE
 seq(10, 100, 5)
 
-# C - TRUE
+# c - TRUE
 rep(1:4, 3)
 
-# D - FALSE
+# d - FALSE
 rep(1:4, 3)
 
 # 2
@@ -57,10 +57,11 @@ loan_requests
 
 # 7
 loan_requests[,2] <- as.numeric(loan_requests[,2]) * 0.7
+loan_requests[,2]
 loan_requests
 
 # 8
-sum(as.numeric(loan_requests[,2]))
+sum(as.numeric(loan_requests[,2])) / length(loan_requests[,2])
 mean(as.numeric(loan_requests[,2]))
 
 # 9
