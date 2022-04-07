@@ -18,15 +18,20 @@ sample(1:50, 5)
 # b - FALSE
 sample(c("Cara", "Coroa"), 5, replace = T)
 
-# c - TRUE? (pode representar o lançamento de 5 dados)
+# c - FALSE
 sample(c(1, 2, 3, 4, 5), 5)
 
-# d - TRUE? (pode representar 6 lançamentos de 2 dados)
+# d - FALSE
 sample(c(1, 2, 3, 4, 5, 6), 2)
 
 # 3
+# Criar um sample de 30 elementos com salarios entre 10 e 20 vezes o salario minimo
 clients <- sample(10:20, 30, replace = T)
+
+# Criar um sample de 5 elementos com index entre 1 e 30
 selected_indexes <- sample(1:30, 5)
+
+# Selecionar os 5 indexes
 clients[selected_indexes]
 
 # 4
