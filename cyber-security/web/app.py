@@ -1,5 +1,6 @@
-
 import streamlit as web
+
+from classifier import issues
 from classifier import match
 
 
@@ -8,7 +9,7 @@ def main():
     text_input = web.text_input("Enter issue:")
 
     if web.button("validate"):
-        if match(text_input.lower()):
+        if match(text_input.lower(), issues):
             web.error("Is an issue 😔!")
         else:
             web.success("Not an issue 😬!")
