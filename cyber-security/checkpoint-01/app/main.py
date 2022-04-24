@@ -1,5 +1,8 @@
+import view.search_view as view
+
+
 def main():
-    print("main")
+    view.create()
 
 
 if __name__ == '__main__':
