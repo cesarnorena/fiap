@@ -1,3 +1,6 @@
+import service.name_validator_service as name_service
+import service.passport_validator_service as passport_service
+
 import streamlit as web
 
 
@@ -10,13 +13,33 @@ def create():
                               help="Insira o passaporte junto com as iniciais do país, ex: AUS123456789",
                               max_chars=12)
 
-    is_disable = not name or not passport
-    on_click = web.button("Procure", disabled=is_disable)
+    on_click = web.button("Procure")
 
     if on_click:
         _search(name, passport)
 
 
 def _search(name: str, passport: str):
-    print(name)
-    print(passport)
+    web.snow()
+
+    try:
+        name_allowed = name_service.is_name_allowed(name)
+    except ValueError as err:
+        web.warning(err)
+        return
+
+    try:
+        passport_allowed = passport_service.is_passport_allowed(passport)
+    except ValueError as err:
+        web.warning(err)
+        return
+
+    if not name_allowed:
+        web.error("Nome supeito de terrorismo")
+        return
+
+    if not passport_allowed:
+        web.error("Pessoa reportada como terrorista")
+        return
+
+    web.success("Pessoa permitida para ingresar")
