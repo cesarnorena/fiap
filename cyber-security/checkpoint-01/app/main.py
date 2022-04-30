@@ -1,4 +1,4 @@
-import view.search_view as view
+import view
 
 
 def main():

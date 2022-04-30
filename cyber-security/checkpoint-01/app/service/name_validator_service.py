@@ -1,23 +1,28 @@
 import re
 
-import repository.interpol_repository as repository
-from thefuzz import fuzz
-from thefuzz import process
+from repository import interpol_repository as repository
+from thefuzz import fuzz, process
+
+from .validator_error import ValidatorError
 
 
 def is_name_allowed(name: str):
     _validate_name_format(name)
 
-    banned_names = repository.get_list()
+    try:
+        banned_names = repository.get_list()
+    except ConnectionError:
+        raise ValidatorError("Error de conexão")
+
     return not _match(name.lower(), banned_names)
 
 
 def _validate_name_format(name: str):
     if not name:
-        raise ValueError("Nome precisa ser preenchido")
+        raise ValidatorError("Nome precisa ser preenchido")
 
     if re.search(r"\d+", name):
-        raise ValueError("Nome não pode conter números")
+        raise ValidatorError("Nome não pode conter números")
 
 
 def _match(text: str, text_list: list):

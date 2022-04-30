@@ -1,16 +1,17 @@
 import unittest
 
 import app.service.name_validator_service as service
+from app.service.validator_error import ValidatorError
 
 
 class TestNameValidatorService(unittest.TestCase):
 
     def test_error_on_empty_name(self):
-        with self.assertRaises(ValueError):
+        with self.assertRaises(ValidatorError):
             service.is_name_allowed("")
 
     def test_error_on_name_with_error(self):
-        with self.assertRaises(ValueError):
+        with self.assertRaises(ValidatorError):
             service.is_name_allowed("Ces4r 123")
 
     def test_name_allowed(self):

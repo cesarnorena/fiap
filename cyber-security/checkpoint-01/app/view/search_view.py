@@ -1,7 +1,6 @@
-import service.name_validator_service as name_service
-import service.passport_validator_service as passport_service
-
 import streamlit as web
+
+from service import *
 
 
 def create():
@@ -24,13 +23,13 @@ def _search(name: str, passport: str):
 
     try:
         name_allowed = name_service.is_name_allowed(name)
-    except ValueError as err:
+    except ValidatorError as err:
         web.warning(err)
         return
 
     try:
         passport_allowed = passport_service.is_passport_allowed(passport)
-    except ValueError as err:
+    except ValidatorError as err:
         web.warning(err)
         return
 
