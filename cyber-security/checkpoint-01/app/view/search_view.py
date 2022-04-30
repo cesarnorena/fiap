@@ -15,12 +15,11 @@ def create():
     on_click = web.button("Procure")
 
     if on_click:
-        _search(name, passport)
+        with web.spinner("Carregando"):
+            _search(name, passport)
 
 
 def _search(name: str, passport: str):
-    web.snow()
-
     try:
         name_allowed = name_service.is_name_allowed(name)
     except ValidatorError as err:
