@@ -1,7 +1,9 @@
 import re
 
-from .validator_error import ValidatorError
 from repository import country_repository as repository
+from requests.exceptions import ConnectionError
+
+from .validator_error import ValidatorError
 
 
 def is_passport_allowed(passport: str):

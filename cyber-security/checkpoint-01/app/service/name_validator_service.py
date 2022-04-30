@@ -1,6 +1,7 @@
 import re
 
 from repository import interpol_repository as repository
+from requests.exceptions import ConnectionError
 from thefuzz import fuzz, process
 
 from .validator_error import ValidatorError
