@@ -4,20 +4,19 @@ from service import name_service, passport_service, ValidatorError
 
 
 def create():
-    web.title("Procure o vilão")
+    web.title("🔍 Pesquisar imigrante")
 
-    name = web.text_input("Nome completo:")
-
-    passport = web.text_input(
+    form = web.form(key="form")
+    name = form.text_input("Nome completo:")
+    passport = form.text_input(
         "Número do passaporte:",
         help="Insira o passaporte junto com as iniciais do país, ex: AUS123456789",
         max_chars=12
     )
-
-    on_click = web.button("Procure")
+    on_click = form.form_submit_button("Procure")
 
     if on_click:
-        with web.spinner("Carregando"):
+        with web.spinner("Procurando"):
             _search(name, passport)
 
 
@@ -35,11 +34,11 @@ def _search(name: str, passport: str):
         return
 
     if not name_allowed:
-        web.error("Nome supeito de terrorismo")
+        web.error("⛔ Nome reportado como terrorista pela Interpol")
         return
 
     if not passport_allowed:
-        web.error("Pessoa reportada como terrorista")
+        web.error("⛔ Pasaporte reportado como terrorista")
         return
 
-    web.success("Pessoa permitida para ingresar")
+    web.success("✅ Pessoa permitida para ingresar")
