@@ -1,6 +1,6 @@
 import streamlit as web
 
-from service import *
+from service import name_service, passport_service, ValidatorError
 
 
 def create():
@@ -8,9 +8,11 @@ def create():
 
     name = web.text_input("Nome completo:")
 
-    passport = web.text_input("Número do passaporte:",
-                              help="Insira o passaporte junto com as iniciais do país, ex: AUS123456789",
-                              max_chars=12)
+    passport = web.text_input(
+        "Número do passaporte:",
+        help="Insira o passaporte junto com as iniciais do país, ex: AUS123456789",
+        max_chars=12
+    )
 
     on_click = web.button("Procure")
 

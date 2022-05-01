@@ -1,8 +1,8 @@
 import re
 
-from repository import country_repository as repository
 from requests.exceptions import ConnectionError
 
+from repository import country_repository
 from .validator_error import ValidatorError
 
 
@@ -12,7 +12,7 @@ def is_passport_allowed(passport: str):
     country, number = _split_passport(passport)
 
     try:
-        banned_passports = repository.get_list(country)
+        banned_passports = country_repository.get_list(country)
     except ConnectionError:
         raise ValidatorError("Error de conexão")
 

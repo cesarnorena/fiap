@@ -1,9 +1,9 @@
 import re
 
-from repository import interpol_repository as repository
 from requests.exceptions import ConnectionError
 from thefuzz import fuzz, process
 
+from repository import interpol_repository
 from .validator_error import ValidatorError
 
 
@@ -11,7 +11,7 @@ def is_name_allowed(name: str):
     _validate_name_format(name)
 
     try:
-        banned_names = repository.get_list()
+        banned_names = interpol_repository.get_list()
     except ConnectionError:
         raise ValidatorError("Error de conexão")
 

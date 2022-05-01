@@ -7,5 +7,5 @@ class TestInterpolRepository(unittest.TestCase):
 
     def test_interpol_list(self):
         interpol_list = repository.get_list()
-        self.assertEqual(len(interpol_list), 63)
-        self.assertEqual(interpol_list[0], "priscila dos santos pereira")
+        self.assertEqual(63, len(interpol_list))
+        self.assertEqual("priscila dos santos pereira", interpol_list[0])
