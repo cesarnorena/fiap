@@ -1,6 +1,6 @@
 import unittest
 
-import app.repository.interpol_repository as repository
+from repository import interpol_repository as repository
 
 
 class TestInterpolRepository(unittest.TestCase):

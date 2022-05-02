@@ -28,6 +28,5 @@ def _validate_name_format(name: str):
 
 def _match(text: str, text_list: list):
     result = process.extractOne(text, text_list, scorer=fuzz.WRatio)
-
-    print(result)
-    return result[1] > 90
+    # print([result[1], text, result[0]])
+    return result[1] > 89

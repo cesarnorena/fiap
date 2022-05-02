@@ -1,7 +1,7 @@
 import unittest
 
-import app.service.passport_validator_service as service
-from app.service.validator_error import ValidatorError
+from service import ValidatorError
+from service import passport_validator_service as service
 
 
 class PassportValidatorService(unittest.TestCase):
