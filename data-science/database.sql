@@ -3,6 +3,7 @@ DROP TABLE IF EXISTS projects;
 DROP TABLE IF EXISTS employees;
 DROP TABLE IF EXISTS projects_departments;
 DROP TABLE IF EXISTS employees_projects;
+DROP TABLE IF EXISTS cars;
 
 CREATE TABLE IF NOT EXISTS departments
 (
@@ -38,6 +39,7 @@ CREATE TABLE IF NOT EXISTS projects_departments
 CREATE TABLE IF NOT EXISTS employees_projects
 (
     id          INTEGER PRIMARY KEY AUTOINCREMENT,
+    hours       INTEGER,
     employee_id INTEGER,
     project_id  INTEGER,
     FOREIGN KEY (employee_id) REFERENCES employees (id),
@@ -50,9 +52,34 @@ VALUES ('Javier Norena Garcia', '55225781063'),
        ('Camilo Norena Pachon', '98310725108'),
        ('Liliana Pachon Garcia', '98348317309');
 
+INSERT INTO projects(code, description, start_at, end_at)
+VALUES ('ABC', 'First project', datetime(), datetime(current_timestamp, '+1 day')),
+       ('DEF', 'Second project', datetime(), datetime(current_timestamp, '+1 day')),
+       ('GHI', 'Third project', datetime(), datetime(current_timestamp, '+1 day'));
+
+INSERT INTO employees_projects(hours, employee_id, project_id)
+VALUES (24, 1, 3),
+       (24, 4, 1),
+       (8, 2, 1),
+       (2, 1, 2),
+       (48, 2, 3);
+
 SELECT *
 FROM employees;
 
 SELECT *
+FROM projects;
+
+SELECT *
+FROM employees_projects;
+
+SELECT *
 FROM employees
 WHERE name LIKE '%norena%';
+
+SELECT COUNT()
+from projects;
+
+SELECT project_id, SUM(hours)
+FROM employees_projects
+GROUP BY project_id;
