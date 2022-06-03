@@ -2,6 +2,7 @@ version: '3.3'
 services:
   db:
     image: mysql:latest
+    container_name: fiap-mysql
     restart: always
     environment:
       MYSQL_DATABASE: 'db'
