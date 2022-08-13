@@ -1,0 +1,4 @@
+# melos_managed_dependency_overrides: tensorflotter
+dependency_overrides:
+  tensorflotter:
+    path: ../tensorflotter

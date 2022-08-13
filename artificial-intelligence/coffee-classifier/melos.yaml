@@ -1,0 +1,16 @@
+name: coffee-classifier
+
+packages:
+  - app
+  - tensorflotter
+
+command:
+  bootstrap:
+    usePubspecOverrides: true
+
+scripts:
+  analyze:
+    exec: flutter analyze .
+
+ide:
+  intellij: true
