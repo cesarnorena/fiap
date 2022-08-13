@@ -6,21 +6,26 @@ services:
     restart: always
     environment:
       MYSQL_DATABASE: 'db'
-      # So you don't have to use root, but you can if you like
       MYSQL_USER: 'user'
-      # You can use whatever password you like
       MYSQL_PASSWORD: 'password'
-      # Password for root access
-      MYSQL_ROOT_PASSWORD: 'password'
+      MYSQL_ROOT_PASSWORD: 'root-password'
     ports:
-      # <Port exposed> : < MySQL Port running inside container>
       - '3306:3306'
     expose:
-      # Opens port 3306 on the container
       - '3306'
-      # Where our data will be persisted
     volumes:
       - my-db:/var/lib/mysql
+
+  mongo:
+    image: mongo:latest
+    container_name: fiap-mongo
+    restart: always
+    ports:
+      - 27017:27017
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: 'user'
+      MONGO_INITDB_ROOT_PASSWORD: 'password'
+
 # Names our volume
 volumes:
   my-db:
