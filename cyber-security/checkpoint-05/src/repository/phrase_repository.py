@@ -1,4 +1,4 @@
-is_registered = False
+_is_registered = False
 
 
 def get() -> str:
@@ -6,12 +6,12 @@ def get() -> str:
 
 
 def register():
-    global is_registered
-    is_registered = True
+    global _is_registered
+    _is_registered = True
 
 
 def is_registered() -> bool:
-    return is_registered
+    return _is_registered
 
 
 def is_valid(phrase: str) -> bool:

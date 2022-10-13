@@ -6,8 +6,6 @@ name = "pypi"
 [packages]
 streamlit = "*"
 speechrecognition = "*"
-wheel = "*"
-pyaudio = "*"
 sounddevice = "*"
 wavio = "*"
 

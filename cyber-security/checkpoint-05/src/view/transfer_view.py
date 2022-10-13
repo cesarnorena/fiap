@@ -1,10 +1,13 @@
 import streamlit
 from src.repository import phrase_repository
 from src.library import audio_recorder
-from src.library import speech_recognition
+from src.library import speech_recognizer
 
 
 def create():
+    if not phrase_repository.is_registered():
+        return
+
     form = streamlit.form("transfer")
 
     form.title("Pix")
@@ -13,14 +16,10 @@ def create():
     form.write("Para autorizar transferencias de alto valor é preciso informar sua palavra secreta.")
 
     if form.form_submit_button("Iniciar gravação"):
-        if not phrase_repository.is_registered():
-            streamlit.error("Sua palavra secreta ainda não foi cadastrada", icon="🚫")
-            return
-
         if record_audio():
-            streamlit.success(f"Transferencia realizada com sucesso", icon="✅")
+            form.success("Transferencia realizada com sucesso", icon="✅")
         else:
-            streamlit.error("Transação rejeitada, sua palavra secreta não foi reconhecida", icon="🚫")
+            form.error("Transação rejeitada, sua palavra secreta não foi reconhecida", icon="🚫")
 
 
 def record_audio():
@@ -30,6 +29,6 @@ def record_audio():
         record = audio_recorder.record_audio()
         audio_recorder.save_record(file_path, record)
 
-        text = speech_recognition.to_text(file_path)
+        text = speech_recognizer.to_text(file_path)
 
         return phrase_repository.is_valid(text)
