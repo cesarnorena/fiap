@@ -1,0 +1,9 @@
+{
+    "time": "2022-11-09 22:11:55.818032",
+    "elapsed_time_sec": 634,
+    "traffic_light_openings": 13,
+    "traffic_light_openings_mean_by_minute": 1.1818181818181819,
+    "motorcycle_count": 49,
+    "vehicle_count": 63,
+    "heavy_vehicle_count": 57
+}
