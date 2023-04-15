@@ -2,5 +2,5 @@
 
 ## Run
 
-- `docker build -t streamlit-template .`
-- `docker run --rm -p 8501:8501 streamlit-template`
+- `docker build -t streamlit-app .`
+- `docker run --rm -p 8501:8501 streamlit-app`

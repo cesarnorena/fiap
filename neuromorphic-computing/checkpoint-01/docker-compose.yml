@@ -1,0 +1,24 @@
+version: '3.9'
+services:
+  web:
+    build: ./web/
+    ports:
+      - "8501:8501"
+    # tty: true
+    # command: bash
+    volumes:
+      - ./web/app:/app
+
+  db:
+    image: postgres:latest
+    environment:
+      - POSTGRES_USER=p_user
+      - POSTGRES_PASSWORD=p_password
+      - POSTGRES_DB=checkpoint
+    ports:
+      - "5432:5432"
+    volumes:
+      - db-data:/var/lib/postgresql/data
+
+volumes:
+  db-data:
