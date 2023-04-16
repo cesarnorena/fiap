@@ -1,4 +1,4 @@
-# Streamlit Template
+# Streamlit App
 
 ## Run
 
