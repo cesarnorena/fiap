@@ -6,6 +6,8 @@ services:
       - "8501:8501"
     volumes:
       - ./web/app:/app
+    environment:
+      - BASE_URL=http://api:80
     depends_on:
       - api
 
@@ -14,7 +16,9 @@ services:
     ports:
       - "8502:80"
     volumes:
-      - ./api/app:/app
+      - ./api:/app
+    environment:
+      - DATABASE_URL=postgresql://user:password@db:5432/checkpoint-01
     depends_on:
       - db
 
